@@ -21,28 +21,36 @@
 <div class="container">
 
 <header class="section-heading">
-	<a href="./store.html" class="btn btn-outline-primary float-right">See all</a>
+	<a href=" {% url 'store' %}" class="btn btn-outline-primary float-right">See all</a>
 	<h3 class="section-title">Popular products</h3>
-</header><!-- sect-heading -->
-
+</header>
 	
 <div class="row">
     {% for product in products %}
 	<div class="col-md-3">
 		<div class="card card-product-grid">
-			<a href="./product-detail.html" class="img-wrap"> <img src="{{ product.image.url }}"> </a>
+			<a href="{{product.get_url}}" class="img-wrap"> <img src="{{ product.image.url }}"> </a>
 			<figcaption class="info-wrap">
 				<a href="./product-detail.html" class="title">{{ product.name }}e</a>
 				<div class="price mt-1">${{ product.price }}</div> <!-- price-wrap.// -->
+				{% if product.stock > 0 %}
+				<a href="{% url 'add_cart' product.id %}" class="btn  btn-primary"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i> </a>
+				<a href="{{product.get_url}}" class="btn  btn-primary"> <span class="text">view detail</span> <i class="fas fa-shopping-cart"></i> </a>
+			
+			</br>
+				<a href="{% url 'add_to_wishlist' product.id %}" class="btn btn-success m-1"> <span class="text">Add to wishlist</span> <i class="fas fa-shopping-cart"></i> </a>
+				
+				{% else %}
+				<h5 class="btn  btn-danger"> Out of stock </h5>
+				{% endif %}
 			</figcaption>
 		</div>
-	</div> <!-- col.// -->
+	</div> 
     {% endfor %}
-</div> <!-- row.// -->
+</div> 
 
-</div><!-- container // -->
+</div>
 </section>
-<!-- ========================= SECTION  END// ========================= -->
 
 
 

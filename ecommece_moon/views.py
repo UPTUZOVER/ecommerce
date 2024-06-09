@@ -33,6 +33,3 @@ products = Product.objects.filter(is_available = True)
 
 
 
-
-
-

@@ -24,5 +24,56 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", home, name = "home"),
     path("store/", include('store.urls')),
+    path('cart/', include('cart.urls')),
+    path('wishlist/', include('wishlist.urls')),
+  
 ] + static(MEDIA_URL, document_root = MEDIA_ROOT)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

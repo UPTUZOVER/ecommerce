@@ -25,19 +25,12 @@ SECRET_KEY = 'django-insecure-1s4k1hz+qpjvhpmyl5!^z918=-1!g-fc!8hnfpw@(nq-u@0c)e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
-JAZZMIN_SETTINGS = {
-    "site_title": "My Admin",
-    "site_header": "My Admin",
-    "site_logo": "path/to/logo.png",
-    "welcome_sign": "Welcome to My Admin",
-    # Other settings
-}
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,15 +38,62 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #install app
-    'jazzmin',
 
     #local app
 
     'category',
     'acount',
     'store',
+    'cart',
+    'wishlist',
+    'ulcham_uchun',
 
 ]
+
+
+JAZZMIN_SETTINGS = {
+    'site_title': 'Your Site Title',
+    'site_header': 'Your Site Header',
+    'site_logo': '/static/logo.png',
+    'welcome_sign': 'Welcome to Your Site',
+    'search_model': 'auth.User',
+    'show_sidebar': True,
+    'navigation_expanded': False,
+    'hide_apps': [],
+    'hide_models': [],
+    'related_modal_active': True,
+    'custom_css': '/static/path/to/custom.css',
+    'custom_js': '/static/path/to/custom.js',
+    'icons': {
+        'auth': 'icon-lock',
+        'sites': 'icon-rocket',
+    },
+    'topmenu_links': [
+        {
+            'name': 'Documentation',
+            'url': 'https://uptuz.vercel.app/',
+            'new_window': True,
+        },
+        {
+            'name': 'Support',
+            'url': 'https://uptuz.vercel.app/',
+            'new_window': True,
+        },
+    ],
+    'usermenu_links': [
+        {
+            'name': 'Profile',
+            'url': '/admin/profile/',
+            'new_window': False,
+        },
+        {
+            'name': 'Logout',
+            'url': '/admin/logout/',
+            'new_window': False,
+        },
+    ],
+    'show_ui_builder': True,
+}
 
 AUTH_USER_MODEL = 'acount.Account'
 
@@ -81,7 +121,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'category.context_processors.menu_links'
+                'category.context_processors.menu_links',
+                'cart.cart_obshiy_samur.carni_ichidagilarni_sanab_chiqaradi_samur',
+                'wishlist.wishlistni_obshiyolinadi.sanash_uchun_samur'
+                
             ],
         },
     },
@@ -96,7 +139,7 @@ WSGI_APPLICATION = 'ecommece_moon.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite1',
+        'NAME': BASE_DIR / 'db.sqlite2',
     }
 }
 
@@ -118,6 +161,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
 
 
 # Internationalization
